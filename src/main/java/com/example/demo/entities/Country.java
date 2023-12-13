@@ -6,6 +6,18 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "country")
 public class Country {
+    public Country(String name, String continent, String region, String localName, Integer capital, String code2) {
+        this.name = name;
+        this.continent = continent;
+        this.region = region;
+        this.localName = localName;
+        this.capital = capital;
+        this.code2 = code2;
+    }
+
+    public Country() {
+    }
+
     @Id
     @Column(name = "Code", nullable = false, length = 3)
     private String code;

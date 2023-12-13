@@ -7,6 +7,17 @@ import org.hibernate.annotations.OnDeleteAction;
 @Entity
 @Table(name = "cart")
 public class Cart {
+    public Cart() {
+    }
+
+    public Cart(User idUser, Product idProduct, Integer qts, Byte payed, Byte confirmed) {
+        this.idUser = idUser;
+        this.idProduct = idProduct;
+        this.qts = qts;
+        this.payed = payed;
+        this.confirmed = confirmed;
+    }
+
     @Id
     @Column(name = "id_cart", nullable = false)
     private Integer id;

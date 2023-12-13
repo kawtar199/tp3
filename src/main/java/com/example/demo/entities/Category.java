@@ -7,6 +7,17 @@ import java.util.List;
 @Entity
 @Table(name = "categories")
 public class Category {
+    public Category(String title, String webTitle, Category parent, List<Category> subCategories, Integer leval) {
+        this.title = title;
+        this.webTitle = webTitle;
+        this.parent = parent;
+        this.subCategories = subCategories;
+        this.leval = leval;
+    }
+
+    public Category() {
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)

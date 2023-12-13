@@ -5,6 +5,21 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "users")
 public class User {
+    public User(String userName, String userEmail, String userPhone, String userFname, String userLname, String userPassword, City userCity, String userAdress, Integer userLoginStatus) {
+        this.userName = userName;
+        this.userEmail = userEmail;
+        this.userPhone = userPhone;
+        this.userFname = userFname;
+        this.userLname = userLname;
+        this.userPassword = userPassword;
+        this.userCity = userCity;
+        this.userAdress = userAdress;
+        this.userLoginStatus = userLoginStatus;
+    }
+
+    public User() {
+    }
+
     @Id
     @Column(name = "user_id", nullable = false)
     private Integer id;

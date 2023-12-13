@@ -5,6 +5,15 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "city")
 public class City {
+    public City(String name, Country countryCode, String district) {
+        this.name = name;
+        this.countryCode = countryCode;
+        this.district = district;
+    }
+
+    public City() {
+    }
+
     @Id
     @Column(name = "ID", nullable = false)
     private Integer id;

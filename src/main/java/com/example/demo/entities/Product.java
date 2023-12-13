@@ -7,6 +7,21 @@ import java.time.Instant;
 @Entity
 @Table(name = "products")
 public class Product {
+    public Product(String productName, String productDescription, String dossier, Category category, Integer inStock, Double price, String brand, Integer nbrImage, Instant dateAdded) {
+        this.productName = productName;
+        this.productDescription = productDescription;
+        this.dossier = dossier;
+        this.category = category;
+        this.inStock = inStock;
+        this.price = price;
+        this.brand = brand;
+        this.nbrImage = nbrImage;
+        this.dateAdded = dateAdded;
+    }
+
+    public Product() {
+    }
+
     @Id
     @Column(name = "product_id", nullable = false)
     private Integer id;
