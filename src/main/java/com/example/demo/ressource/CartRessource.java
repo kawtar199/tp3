@@ -10,14 +10,14 @@ import jakarta.ws.rs.core.Response;
 
 @Path("/Cart")
 public class CartRessource {
-private ActionDAO actionDAO;
+private CartDAO cartDAO;
 
 
         @POST
         @Consumes(MediaType.APPLICATION_JSON)
         public Response createCart(Cart cart) {
-        boolean createCart =actionDAO.create(cart);
-            if(createCart=false) {
+        boolean createCart =cartDAO.create(cart);
+            if(!createCart) {
                 return Response.status(Response.Status.NO_CONTENT).entity("cart can not be created").build();
             }else{
             return Response.status(Response.Status.CREATED).entity("cart created").build();
@@ -26,23 +26,23 @@ private ActionDAO actionDAO;
         @PUT
         @Path("/UPDATE/{id}")
         @Consumes(MediaType.APPLICATION_JSON)
-        public Response updateEmployee(Cart cart) {
+        public Response updateCart(Cart cart) {
             if(cart==null){
                 return Response.status(Response.Status.NO_CONTENT).entity("can not update cart ").build();}
             else  {
-                actionDAO.update(cart);
+                cartDAO.update(cart);
             return Response.status(Response.Status.OK).entity("cart updated").build();
         }}
 
 
-@DELETE
-@Path("{id}")
-@Consumes(MediaType.APPLICATION_JSON)
-public Response updateEmployee(@PathParam("id") int id) {
-    if (id > 10) {
-        return Response.status(Response.Status.NO_CONTENT).entity("Employee note send").build();
+    @DELETE
+    @Path("{id}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response deleteCart(@PathParam("id") Integer id) {
+            boolean deleteCart= cartDAO.deleteById(id.toString());
+        if (!deleteCart) {
+            return Response.status(Response.Status.NO_CONTENT).entity("can not delete cart").build();
+        }
+        return Response.status(Response.Status.OK).entity("cart was deleted").build();
     }
-    return Response.status(Response.Status.OK).entity("Employee was deleted").build();
-
-}
 }
