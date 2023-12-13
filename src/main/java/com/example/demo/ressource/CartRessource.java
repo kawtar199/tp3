@@ -1,5 +1,6 @@
 package com.example.demo.ressource;
 
+import com.example.demo.dao.ActionDAO;
 import com.example.demo.dao.CartDAO;
 import com.example.demo.entities.Cart;
 import jakarta.ws.rs.*;
@@ -9,14 +10,14 @@ import jakarta.ws.rs.core.Response;
 
 @Path("/Cart")
 public class CartRessource {
-private CartDAO cartDAO;
+private ActionDAO actionDAO;
 
 
         @POST
         @Consumes(MediaType.APPLICATION_JSON)
         public Response createCart(Cart cart) {
-        boolean createCart =cartDAO.create(cart);
-            if(false) {
+        boolean createCart =actionDAO.create(cart);
+            if(createCart=false) {
                 return Response.status(Response.Status.NO_CONTENT).entity("cart can not be created").build();
             }else{
             return Response.status(Response.Status.CREATED).entity("cart created").build();
@@ -29,7 +30,7 @@ private CartDAO cartDAO;
             if(cart==null){
                 return Response.status(Response.Status.NO_CONTENT).entity("can not update cart ").build();}
             else  {
-                cartDAO.update(cart);
+                actionDAO.update(cart);
             return Response.status(Response.Status.OK).entity("cart updated").build();
         }}
 
